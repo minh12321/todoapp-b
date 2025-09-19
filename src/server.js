@@ -6,6 +6,8 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
+import tagRoutes from "./routes/tagRoutes.js";
+import TaskTag from "./models/TaskTag.js";
 
 
 dotenv.config();
@@ -14,6 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/tags", tagRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api", projectRoutes);
