@@ -8,6 +8,10 @@ import projectRoutes from "./routes/projectRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import tagRoutes from "./routes/tagRoutes.js";
 import TaskTag from "./models/TaskTag.js";
+import sharingRoutes from "./routes/sharing.js";
+import adminRoutes from "./routes/admin.js";
+
+
 
 
 dotenv.config();
@@ -16,11 +20,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api", adminRoutes);
+
 app.use("/api/tags", tagRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api", projectRoutes);
 app.use("/api", taskRoutes);
+app.use("/api", sharingRoutes);
 
 const PORT = process.env.PORT || 5000;
 

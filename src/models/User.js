@@ -22,7 +22,29 @@ const User = sequelize.define("User", {
   password_hash: {
     type: DataTypes.STRING,
     allowNull: false
-  }
+  },
+  role: {
+    type: DataTypes.ENUM("user", "admin"),
+    allowNull: false,
+    defaultValue: "user",
+  },
+  status: {
+    type: DataTypes.ENUM(
+      "active",       
+      "banned",       // bị khóa
+      "expired",      // hết hạn
+      "locked_login"  // bị khóa do login quá số 5 lần
+    ),
+    allowNull: false,
+    defaultValue: "active",
+  },
+  login_attempts: {  
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 0,
+  },
+  created_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+  updated_at: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
 }, {
   tableName: "users",
   timestamps: true,    
