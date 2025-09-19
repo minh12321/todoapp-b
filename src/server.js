@@ -10,9 +10,7 @@ import tagRoutes from "./routes/tagRoutes.js";
 import TaskTag from "./models/TaskTag.js";
 import sharingRoutes from "./routes/sharing.js";
 import adminRoutes from "./routes/admin.js";
-
-
-
+import notificationRoutes from "./routes/notificationRoutes.js";
 
 dotenv.config();
 
@@ -28,6 +26,7 @@ app.use("/api/users", userRoutes);
 app.use("/api", projectRoutes);
 app.use("/api", taskRoutes);
 app.use("/api", sharingRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 const PORT = process.env.PORT || 5000;
 

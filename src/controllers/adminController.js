@@ -39,12 +39,12 @@ export const updateUserStatus = async (req, res) => {
     }
 
     const user = await User.findByPk(id);
-    if (!user) return res.status(404).json({ error: "User not found" });
+    if (!user) return res.status(404).json({ error: "Người dùng không tồn tại" });
 
     user.status = status;
     await user.save();
 
-    res.json({ message: "User status updated", user });
+    res.json({ message: "done!", user });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
