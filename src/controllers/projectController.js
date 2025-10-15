@@ -23,6 +23,17 @@ export const createProject = async (req, res) => {
   }
 };
 
+export const getProjectsByUser = async (req, res) => {
+  try {
+    const projects = await Project.findAll({
+      where: { user_id: req.params.userId }
+    });
+    res.json(projects);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 // Chi tiết project
 export const getProjectById = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
 import express from "express";
-import { getProjectById, getProjects ,createProject ,updateProject,deleteProject} from "../controllers/projectController.js";
+import { getProjectById, getProjects ,createProject ,updateProject,deleteProject,getProjectsByUser} from "../controllers/projectController.js";
 import { createTask,getTaskById ,updateTask,deleteTask ,getTasksByProject} from "../controllers/taskController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
@@ -11,6 +11,7 @@ router.post("/projects", createProject);
 router.get("/projects/:id", getProjectById);
 router.put("/projects/:id", updateProject);
 router.delete("/projects/:id", deleteProject);
+router.get("/user/:userId", getProjectsByUser);   
 
 // Task theo project
 router.get("/projects/:id/tasks", getTasksByProject);

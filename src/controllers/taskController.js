@@ -14,6 +14,7 @@ export const getTasksByProject = async (req, res) => {
 export const createTask = async (req, res) => {
   try {
     const { project_id, title, description, due_date, priority, status } = req.body;
+    console.log("📩 Payload nhận từ FE:", req.body);
     const task = await Task.create({ project_id, title, description, due_date, priority, status });
     res.status(201).json(task);
   } catch (err) {
